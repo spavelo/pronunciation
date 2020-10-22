@@ -9,7 +9,7 @@ let pronounce = [
     'ей', 'бі', 'сі', 'ді', 'i', 'еф', 'джи', 'ейч',
     'ай', 'джей', 'кей', 'ел', 'ем', 'ен', 'оу', 'пі',
     'кью', 'ер', 'ес', 'ті', 'ю', 'ві', 'дабл\'ю', 'екс',
-    'вай', 'зет',
+    'вай', 'зет'
 ];
 
 let resultContainer = getClassName('result-container');
@@ -17,9 +17,9 @@ let buttonsContainer = getClassName('buttons-container');
 
 createButton();
 
-createElement('button', 'gap', buttonsContainer, '',
+createElement('div', 'gap', buttonsContainer, '',
     () => resultContainer.value += ' ');
-createElement('button', 'clear', buttonsContainer, '&times;',
+createElement('div', 'clear', buttonsContainer, '&times;',
     () => resultContainer.value = '');
 
 
@@ -31,6 +31,16 @@ function createButton() {
 
         button.onclick = () => {
             resultContainer.value += alphabet[i].toUpperCase();
+            setTimeout(() => {
+                button.innerHTML = alphabet[i].toUpperCase();
+                button.style.backgroundColor = '#409d23'
+            }, 0);
+            setTimeout(() => {
+                button.innerHTML = pronounce[i];
+                button.style.backgroundColor = 'moccasin'
+
+            }, 500)
+
         };
         buttonsContainer.append(button)
     }
